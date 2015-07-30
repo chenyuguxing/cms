@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+	<!--HttpSession-->
+	<bean id="sessionProvider" class="com.soarcms.common.web.session.HttpSessionProvider"/>
+	<!--缓存Session
+		<bean id="sessionProvider" class="com.jeecms.common.web.session.CacheSessionProvider">
+			<property name="sessionCache" ref="sessionCache"/>
+			<property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+		</bean>
+		-->
+	<!--Memcached缓存
+		<bean id="sessionCache" class="com.jeecms.common.web.session.cache.MemcachedDangaCache">		
+			<property name="servers">
+				<list>
+					<value>127.0.0.1:11211</value>
+				</list>
+			</property>
+			<property name="weights">
+				<list>
+					<value>1</value>
+				</list>
+			</property>
+		</bean>
+		-->
+	<!--Ehcache缓存
+		<bean id="sessionCache" class="com.jeecms.common.web.session.cache.EhcacheSessionCache">
+			<property name="cache" ref="ehSessionCache"/>
+		</bean>
+		-->
+	<!--SessionId生成器
+		<bean id="sessionIdGenerator" class="com.jeecms.common.web.session.id.JdkUUIDGenerator"/>
+		-->
+	<!--图片处理-->
+	<bean id="imageScale" class="com.soarcms.common.image.ImageScaleImpl" init-method="init">
+		<property name="tryMagick" value="true"/>
+	</bean>
+	<!--密码加密器-->
+	<bean id="pwdEncoder" class="com.soarcms.common.security.encoder.Md5PwdEncoder"/>
+		
+	<!--执行时间标签-->
+	<bean id="uuid" class="com.soarcms.common.web.freemarker.UUIDDirective"/>
+	<bean id="process_time" class="com.soarcms.common.web.freemarker.ProcessTimeDirective"/>
+	<bean id="text_cut" class="com.soarcms.common.web.freemarker.TextCutDirective"/>
+	<bean id="html_cut" class="com.soarcms.common.web.freemarker.HtmlCutDirective"/>
+	
+	<bean id="realPathResolver" class="com.soarcms.common.web.springmvc.ServletContextRealPathResolver"/>
+	<bean id="fileRepository" class="com.soarcms.common.upload.FileRepository"/>
+	<!--文件模板-->
+	<bean id="tplManager" class="com.soarcms.core.tpl.FileTplManagerImpl"/>
+	<!--数据库模板
+		<bean id="dbTplDao" class="com.soarcms.core.dao.impl.DbTplDaoImpl"/>
+		<bean id="tplManager" class="com.soarcms.core.manager.impl.DbTplMngImpl"/>
+		-->
+
+	<bean id="ipSeeker" class="com.soarcms.common.ipseek.IPSeekerImpl" init-method="init">
+		<property name="dir" value="/WEB-INF/ipseek"/>
+		<property name="filename" value="QQWry.Dat"/>
+	</bean>
+	<bean id="authenticationDao" class="com.soarcms.core.dao.impl.AuthenticationDaoImpl"/>
+	<bean id="dbFileDao" class="com.soarcms.core.dao.impl.DbFileDaoImpl"/>
+	<bean id="unifiedUserDao" class="com.soarcms.core.dao.impl.UnifiedUserDaoImpl"/>
+	<bean id="ftpDao" class="com.soarcms.core.dao.impl.FtpDaoImpl"/>
+	<bean id="configDao" class="com.soarcms.core.dao.impl.ConfigDaoImpl"/>
+	<bean id="configItemDao" class="com.soarcms.core.dao.impl.CmsConfigItemDaoImpl"/>
+	
+	<bean id="cmsSiteDao" class="com.soarcms.core.dao.impl.CmsSiteDaoImpl"/>
+	<bean id="cmsConfigDao" class="com.soarcms.core.dao.impl.CmsConfigDaoImpl"/>
+	<bean id="cmsUserDao" class="com.soarcms.core.dao.impl.CmsUserDaoImpl"/>
+	<bean id="cmsUserExtDao" class="com.soarcms.core.dao.impl.CmsUserExtDaoImpl"/>
+	<bean id="cmsUserSiteDao" class="com.soarcms.core.dao.impl.CmsUserSiteDaoImpl"/>
+	<bean id="cmsGroupDao" class="com.soarcms.core.dao.impl.CmsGroupDaoImpl"/>
+	<bean id="cmsRoleDao" class="com.soarcms.core.dao.impl.CmsRoleDaoImpl"/>
+	<bean id="cmsLogDao" class="com.soarcms.core.dao.impl.CmsLogDaoImpl"/>
+	<bean id="cmsDictionaryDao" class="com.soarcms.core.dao.impl.CmsDictionaryDaoImpl"/>
+	<bean id="cmsSiteCompanyDao" class="com.soarcms.core.dao.impl.CmsSiteCompanyDaoImpl"/>
+	<bean id="cmsUserResumeDao" class="com.soarcms.core.dao.impl.CmsUserResumeDaoImpl"/>
+
+	<bean id="authenticationMng" class="com.soarcms.core.manager.impl.AuthenticationMngImpl"/>
+	<bean id="dbFileMng" class="com.soarcms.core.manager.impl.DbFileMngImpl"/>
+	<bean id="unifiedUserMng" class="com.soarcms.core.manager.impl.UnifiedUserMngImpl"/>
+	<bean id="ftpMng" class="com.soarcms.core.manager.impl.FtpMngImpl"/>
+	<bean id="configMng" class="com.soarcms.core.manager.impl.ConfigMngImpl"/>
+	<bean id="configItemMng" class="com.soarcms.core.manager.impl.CmsConfigItemMngImpl"/>
+	
+	<bean id="cmsSiteMng" class="com.soarcms.core.manager.impl.CmsSiteMngImpl"/>
+	<bean id="cmsConfigMng" class="com.soarcms.core.manager.impl.CmsConfigMngImpl"/>
+	<bean id="cmsUserMng" class="com.soarcms.core.manager.impl.CmsUserMngImpl"/>
+	<bean id="cmsUserExtMng" class="com.soarcms.core.manager.impl.CmsUserExtMngImpl"/>
+	<bean id="cmsUserSiteMng" class="com.soarcms.core.manager.impl.CmsUserSiteMngImpl"/>
+	<bean id="cmsGroupMng" class="com.soarcms.core.manager.impl.CmsGroupMngImpl"/>
+	<bean id="cmsRoleMng" class="com.soarcms.core.manager.impl.CmsRoleMngImpl"/>
+	<bean id="cmsLogMng" class="com.soarcms.core.manager.impl.CmsLogMngImpl"/>
+	<bean id="cmsDictionaryMng" class="com.soarcms.core.manager.impl.CmsDictionaryMngImpl"/>
+	<bean id="cmsSiteCompanyMng" class="com.soarcms.core.manager.impl.CmsSiteCompanyMngImpl"/>
+	<bean id="cmsUserResumeMng" class="com.soarcms.core.manager.impl.CmsUserResumeMngImpl"/>
+	
+</beans>
