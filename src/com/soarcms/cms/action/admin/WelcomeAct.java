@@ -27,6 +27,7 @@ public class WelcomeAct {
 	@RequiresPermissions("index")
 	@RequestMapping("/index.do")
 	public String index(HttpServletRequest request) {
+		System.out.println("===============>这是cms的入口吗?");
 		return "index";
 	}
 
