@@ -11,6 +11,7 @@
 $(function() {
 	//优先执行第三方退出 在执行本地退出
    $('#logout').click(function () {
+	   [#--
           [#if site.config.qqEnable]
               //退出qq
                if(QC.Login.check()){
@@ -40,6 +41,9 @@ $(function() {
          [#if !site.config.qqEnable&&!site.config.sinaEnable&&!site.config.qqWeboEnable]
                location="${base}/logout.jspx?returnUrl=/";
          [/#if]
+	    --]
+	   //以上代码js报错, 未找到原因,先注释掉
+         location="${base}/logout.jspx?returnUrl=/";
   });
 });
 </script>

@@ -30,6 +30,7 @@ $(function() {
 <div id="loginCsiDiv"></div>
 <script type="text/javascript">
 $(function(){
+	//刷新页面时向服务端发送请求,返回一个模板,js方法在front.js中, 处理请求的方法在LoginAct中
 	Cms.loginCsi("${base}","loginCsiDiv",{"returnUrl":"${location}"});
 });
 </script>

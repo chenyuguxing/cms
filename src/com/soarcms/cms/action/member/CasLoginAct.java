@@ -18,7 +18,12 @@ public class CasLoginAct {
 	public static final String LOGIN_STATUS = "tpl.loginStatus";
 	public static final String TPL_INDEX = "tpl.index";
 
-
+	/**
+	 * 首页头部跳转到登陆页面
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/login.jspx", method = RequestMethod.GET)
 	public String input(HttpServletRequest request, ModelMap model) {
 		CmsSite site = CmsUtils.getSite(request);

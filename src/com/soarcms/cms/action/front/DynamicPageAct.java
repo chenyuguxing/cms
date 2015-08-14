@@ -57,6 +57,7 @@ public class DynamicPageAct {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(HttpServletRequest request,HttpServletResponse response, ModelMap model) {
 		CmsSite site = CmsUtils.getSite(request);
+		//将数据放到model中,传到前台
 		FrontUtils.frontData(request, model, site);
 		//带有其他路径则是非法请求
 		String uri=URLHelper.getURI(request);
