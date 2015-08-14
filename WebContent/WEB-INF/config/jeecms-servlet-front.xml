@@ -47,6 +47,7 @@
 	</bean>
 	<bean id="freemarkerViewResolver" class="com.soarcms.common.web.springmvc.SimpleFreeMarkerViewResolver">
 		<property name="contentType" value="text/html; charset=UTF-8"/>
+		<!-- 请求和会话属性是否会被复制到模板中,即是否可以使用freeMark的表达式语言来访问 -->
 		<property name="exposeRequestAttributes" value="false"/>
 		<property name="exposeSessionAttributes" value="false"/>
 		<property name="exposeSpringMacroHelpers" value="true"/>
