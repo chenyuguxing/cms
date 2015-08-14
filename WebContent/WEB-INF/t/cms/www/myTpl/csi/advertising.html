@@ -21,7 +21,7 @@ document.write("${html?js_string}");
 	<span style="[#if (ad.attr.text_color)??]color:${ad.attr.text_color};[/#if][#if (ad.attr.text_font)??]font-size:${ad.attr.text_font};[/#if]">${(ad.attr.text_title)!}</span>
 </a>
 [/#assign]
-document.write("${html?js_string}");
+document.write("${html?js_string}"); 
 
 [#elseif ad.category=="code"]
 ${ad.code!}
