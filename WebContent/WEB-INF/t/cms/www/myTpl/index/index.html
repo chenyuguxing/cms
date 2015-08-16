@@ -110,6 +110,7 @@ $(function() {
                             [@cms_content_list count='6' orderBy='4' titLen='24' channelId='11'  channelOption='1']
                             [#list tag_list as a]
                             [#if a.id==448]
+                            <!-- a中有可能没有url这个属性, 但是肯定要有getUrl这个方法 -->
                             <li><a href="${a.url}" title="${a.title}" target="_blank" style="color:#e66100;">[@text_cut s=a.title len=23 /]</a></li>
                             [#else]
                             <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen /]</a></li>
