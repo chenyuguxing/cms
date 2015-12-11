@@ -77,7 +77,7 @@ public class WebEhCacheManagerFacotryBean  implements FactoryBean<CacheManager>,
 				DiskStoreConfiguration dc = new DiskStoreConfiguration();
 //				开发模式下,改动文件重新发布项目删除缓存文件失败会报错, 将缓存文件保存到指定目录
 //				dc.setPath(this.diskStoreLocation.getFile().getAbsolutePath());
-				dc.setPath("D:\\JAVA\\apache-tomcat-6.0.37\\work");
+				dc.setPath("C:\\lijinlong\\logAndCaches");
 				try {
 					config.addDiskStore(dc);
 				} catch (ObjectExistsException e) {
